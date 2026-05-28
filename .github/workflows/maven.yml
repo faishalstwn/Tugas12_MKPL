@@ -1,16 +1,16 @@
 name: Build Project
 
 on:
- push:
-  branches:
-  - main
- pull_request:
-   branches:
-    - main
+push:
+branches: [ main ]
+
+pull_request:
+branches: [ main ]
 
 jobs:
- build:
-  runs-on: ubuntu-latest
+build:
+
+runs-on: ubuntu-latest
 
   steps:
   - uses: actions/checkout@v3
@@ -28,4 +28,7 @@ jobs:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     run: |
-      mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=faishalstwn -Dsonar.projectKey=faishalstwn_Tugas12_MKPL
+      mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121:sonar \
+      -Dsonar.host.url=https://sonarcloud.io \
+      -Dsonar.organization=faishalstwn \
+      -Dsonar.projectKey=faishalstwn_Tugas12_MKPL
