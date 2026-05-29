@@ -1,19 +1,29 @@
+```java
 public class Driver {
 
     public static void main(String[] args) {
 
         Counter counter = new Counter();
 
-        printCount("Initial count", counter);
+        displayCounterState("Initial count", counter);
 
         counter.increment();
-        printCount("After increment", counter);
+        displayCounterState("After increment", counter);
+
+        counter.increaseBy(4);
+        displayCounterState("After increaseBy(4)", counter);
 
         counter.decrement();
-        printCount("After decrement", counter);
+        displayCounterState("After decrement", counter);
+
+        counter.triple();
+        displayCounterState("After triple", counter);
+
+        System.out.println("Is count even? " + counter.isCountEven());
     }
 
-    private static void printCount(String label, Counter counter) {
-        System.out.println(label + ": " + counter.getCount());
+    private static void displayCounterState(String message, Counter counter) {
+        System.out.println(message + ": " + counter.getCount());
     }
 }
+```
