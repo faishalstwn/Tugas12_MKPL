@@ -1,52 +1,57 @@
-package src.main.java;
-
 public class Counter {
 
-	private int count;
-	
-	public Counter() {
-		this.reset();
-	}
-		
-	public void reset() {
-		count = 0;
-	}
-	
-	public void increment() {
-		count++;
-	}
-	
-	public void increaseBy(int i) {
-		count+=i;
-	}
-	
-	public void decrement() {
-		count--;
-	}
-	
-	public void decreaseBy(int i) {
-		count-=i;
-	}
-	
-	public void multiplyBy(int i){
-		count = count * i;
-	}
-	
-	public void triple(){
-		int i = 3;
-		multiplyBy(i);
-	}
+    private int count;
 
-	public void powerBy(int i){
-		count = count ^ i;
-	}
-	
-	public boolean isCountEven(){
-		return count%2 == 0;
-	}
-	
-	public int getCount() {
-		return count;
-	}
-	
+    public Counter() {
+        reset();
+    }
+
+    public void reset() {
+        count = 0;
+    }
+
+    public void increment() {
+        count++;
+    }
+
+    public void increaseBy(int value) {
+        validateNonNegative(value);
+        count += value;
+    }
+
+    public void decrement() {
+        count--;
+    }
+
+    public void decreaseBy(int value) {
+        validateNonNegative(value);
+        count -= value;
+    }
+
+    public void multiplyBy(int value) {
+        count *= value;
+    }
+
+    public void triple() {
+        multiplyBy(3);
+    }
+
+    public void powerBy(int exponent) {
+        validateNonNegative(exponent);
+        count = (int) Math.pow(count, exponent);
+    }
+
+    public boolean isCountEven() {
+        return count % 2 == 0;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    private void validateNonNegative(int value) {
+        if (value < 0) {
+            throw new IllegalArgumentException("Value cannot be negative");
+        }
+    }
 }
