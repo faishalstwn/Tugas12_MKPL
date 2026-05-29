@@ -3,7 +3,7 @@ public class Counter {
     private int count;
 
     public Counter() {
-        this.reset();
+        reset();
     }
 
     public void reset() {
@@ -14,38 +14,31 @@ public class Counter {
         count++;
     }
 
-    public void increaseBy(int i) {
-        if (i < 0) {
-            throw new IllegalArgumentException("Nilai tidak boleh negatif");
-        }
-        count += i;
+    public void increaseBy(int value) {
+        validateNonNegative(value);
+        count += value;
     }
 
     public void decrement() {
         count--;
     }
 
-    public void decreaseBy(int i) {
-        if (i < 0) {
-            throw new IllegalArgumentException("Nilai tidak boleh negatif");
-        }
-        count -= i;
+    public void decreaseBy(int value) {
+        validateNonNegative(value);
+        count -= value;
     }
 
-    public void multiplyBy(int i) {
-        count *= i;
+    public void multiplyBy(int value) {
+        count *= value;
     }
 
     public void triple() {
-        count *= 3;
+        multiplyBy(3);
     }
 
-    // FIX: pakai Math.pow agar sesuai Java standard
-    public void powerBy(int i) {
-        if (i < 0) {
-            throw new IllegalArgumentException("Exponent tidak boleh negatif");
-        }
-        count = (int) Math.pow(count, i);
+    public void powerBy(int exponent) {
+        validateNonNegative(exponent);
+        count = (int) Math.pow(count, exponent);
     }
 
     public boolean isCountEven() {
@@ -54,5 +47,11 @@ public class Counter {
 
     public int getCount() {
         return count;
+    }
+
+    private void validateNonNegative(int value) {
+        if (value < 0) {
+            throw new IllegalArgumentException("Value cannot be negative");
+        }
     }
 }
