@@ -1,29 +1,39 @@
-```java
+```java id="qyzl6e"
 public class Driver {
 
     public static void main(String[] args) {
 
         Counter counter = new Counter();
 
-        displayCounterState("Initial count", counter);
+        displayHeader("COUNTER APPLICATION");
+
+        performOperation("Initial count", counter);
 
         counter.increment();
-        displayCounterState("After increment", counter);
+        performOperation("After increment", counter);
 
-        counter.increaseBy(4);
-        displayCounterState("After increaseBy(4)", counter);
+        counter.increaseBy(5);
+        performOperation("After increaseBy(5)", counter);
 
-        counter.decrement();
-        displayCounterState("After decrement", counter);
+        counter.multiplyBy(2);
+        performOperation("After multiplyBy(2)", counter);
 
-        counter.triple();
-        displayCounterState("After triple", counter);
+        counter.powerBy(2);
+        performOperation("After powerBy(2)", counter);
 
-        System.out.println("Is count even? " + counter.isCountEven());
+        System.out.println("\nFinal Result");
+        System.out.println("Current count: " + counter.getCount());
+        System.out.println("Is even number? " + counter.isCountEven());
     }
 
-    private static void displayCounterState(String message, Counter counter) {
-        System.out.println(message + ": " + counter.getCount());
+    private static void performOperation(String operation, Counter counter) {
+        System.out.println(operation + " -> " + counter.getCount());
+    }
+
+    private static void displayHeader(String title) {
+        System.out.println("=================================");
+        System.out.println(title);
+        System.out.println("=================================");
     }
 }
 ```
