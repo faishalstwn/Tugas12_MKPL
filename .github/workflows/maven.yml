@@ -34,4 +34,7 @@ jobs:
           mvn sonar:sonar \
             -Dsonar.projectKey=faishalstwn_Tugas12_MKPL \
             -Dsonar.organization=faishalstwn \
-            -Dsonar.host.url=https://sonarcloud.io
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} \
+            -Dsonar.pullrequest.branch=${{ github.head_ref }} \
+            -Dsonar.pullrequest.base=${{ github.base_ref }}
