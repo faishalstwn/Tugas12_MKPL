@@ -15,6 +15,9 @@ public class Counter {
     }
 
     public void increaseBy(int i) {
+        if (i < 0) {
+            throw new IllegalArgumentException("Nilai tidak boleh negatif");
+        }
         count += i;
     }
 
@@ -23,6 +26,9 @@ public class Counter {
     }
 
     public void decreaseBy(int i) {
+        if (i < 0) {
+            throw new IllegalArgumentException("Nilai tidak boleh negatif");
+        }
         count -= i;
     }
 
@@ -31,20 +37,15 @@ public class Counter {
     }
 
     public void triple() {
-        multiplyBy(3);
+        count *= 3;
     }
 
-    // FIX: sebelumnya XOR (^), sekarang benar-benar pangkat
+    // FIX: pakai Math.pow agar sesuai Java standard
     public void powerBy(int i) {
         if (i < 0) {
             throw new IllegalArgumentException("Exponent tidak boleh negatif");
         }
-
-        int result = 1;
-        for (int j = 0; j < i; j++) {
-            result *= count;
-        }
-        count = result;
+        count = (int) Math.pow(count, i);
     }
 
     public boolean isCountEven() {
